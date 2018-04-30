@@ -1,261 +1,190 @@
 %typemap(javaimports) kuzzleio::Collection "
 /* The type Collection. */"
 
-%javamethodmodifiers kuzzleio::Collection::Collection(Kuzzle *kuzzle, const std::string& collection, const std::string& index) "
+%javamethodmodifiers kuzzleio::Collection::Collection(Kuzzle *kuzzle) "
   /**
    * Constructor
    *
    * @param kuzzle  Kuzzle instance
-   * @param collection  Data collection name
-   * @param index  Parent data index name
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::count(search_filters* filters, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::create(const std::string& index, const std::string &collection, query_options* options) "
   /**
-   * Returns the number of documents matching the provided set of filters.
-   * There is a small delay between documents creation and their existence in our search layer,
-   * usually a couple of seconds.
-   * That means that a document that was just been created won’t be returned by this function
+   * Create a new empty data collection, with no associated mapping.
+   * Kuzzle automatically creates data collections when storing documents, but there are cases where we want to create and prepare data collections before storing documents in it.
    *
-   * @param filters  Search filters
-   * @param options  Request options
-   * @returns the number of documents
+   * @param index - Index where to create the collection
+   * @param collection - The name of the collection
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::count(search_filters* filters) "
+%javamethodmodifiers kuzzleio::Collection::create(const std::string& index, const std::string &collection) "
   /**
-   * {@link #count(SearchFilters filters, QueryOptions options)}
+   * {@link #create(String index, String collection, QueryOptions options)}
    */
   public";
 
-
-%javamethodmodifiers kuzzleio::Collection::deleteDocument(const std::string& id, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::exists(const std::string& index, const std::string &collection, query_options* options) "
   /**
-   * Delete a single document
+   * Check if a collection exists
    *
-   * @param id Document unique identifier
-   * @param options  Request options
-   * @return this
+   * @param index - Index where to create the collection
+   * @param collection - The name of the collection
+   * @param options - Request options
+   * @return a boolean
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::deleteDocument(const std::string& id) "
+%javamethodmodifiers kuzzleio::Collection::exists(const std::string& index, const std::string &collection) "
   /**
-   * {@link #deleteDocument(String id, QueryOptions options)}
+   * {@link #exists(String index, String collection, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::fetchDocument(const std::string& id, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::list(const std::string& index, query_options* options) "
   /**
-   * Fetch a document from Kuzzle
+   * List collections
    *
-   * @param id  Document unique identifier
-   * @param options  Request options
+   * @param index - Parent data index name
+   * @param options - Request options
+   * @return a json containing the list of collections
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::fetchDocument(const std::string& id) "
+%javamethodmodifiers kuzzleio::Collection::list(const std::string& index) "
   /**
-   * {@link #fetchDocument(String id, QueryOptions options)}
+   * {@link #list(String index, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mCreateDocument(std::vector<Document*>& documents, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::truncate(const std::string& index, const std::string &collection, query_options* options) "
   /**
-   * Create multiple documents
+   * Truncate the data collection, removing all stored documents but keeping all associated mappings.
    *
-   * @param documents  List of Document objects to create
-   * @param options  Request options
-   * @return a list of all document created 
+   * @param index - Parent data index name
+   * @param collection - The name of the collection
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mCreateDocument(std::vector<Document*>& documents) "
+%javamethodmodifiers kuzzleio::Collection::truncate(const std::string& index, const std::string &collection) "
   /**
-   * {@link #mCreateDocument(DocumentVector documents, QueryOptions options)}
+   * {@link #truncate(String index, String collection, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mCreateOrReplaceDocument(std::vector<Document*>& documents, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::getMapping(const std::string& index, const std::string &collection, query_options* options) "
   /**
-   * Create or replace multiple documents
+   * Get the mapping for this collection
    *
-   * @param documents  Array of Document objects to create or replace
-   * @param options  Request options
-   * @return a list of all created or updated documents
+   * @param index - Parent data index name
+   * @param collection - The name of the collection
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mCreateOrReplaceDocument(std::vector<Document*>& documents) "
+%javamethodmodifiers kuzzleio::Collection::getMapping(const std::string& index, const std::string &collection) "
   /**
-   * {@link #mCreateOrReplaceDocument(DocumentVector documents, QueryOptions options)}
+   * {@link #getMapping(String index, String collection, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mDeleteDocument(std::vector<std::string>& ids, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::updateMapping(const std::string& index, const std::string &collection, const std::string &body, query_options* options) "
   /**
-   * Delete multiple documents using their unique IDs
+   * Update the mapping for this collection
    *
-   * @param ids  Array of document IDs to delete
-   * @param options  Request options
-   * @return a list of all deleted ids's documents
+   * @param index - Parent data index name
+   * @param collection - The name of the collection
+   * @param body - The json representing the mapping
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mDeleteDocument(std::vector<std::string>& ids) "
+%javamethodmodifiers kuzzleio::Collection::updateMapping(const std::string& index, const std::string &collection, const std::string &body) "
   /**
-   * {@link #mDeleteDocument(StringVector ids, QueryOptions options)}
+   * {@link #updateMapping(String index, String collection, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mGetDocument(std::vector<std::string>& ids, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::getSpecifications(const std::string& index, const std::string &collection, query_options* options) "
   /**
-   * Fetch multiple documents
+   * Get the specifications for this collection
    *
-   * @param ids  Array of document IDs to get
-   * @param options  Request options
-   * @return a list of Documents
+   * @param index - Parent data index name
+   * @param collection - The name of the collection
+   * @param options - Request options
+   * @return specifications
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mGetDocument(std::vector<std::string>& ids) "
+%javamethodmodifiers kuzzleio::Collection::getSpecifications(const std::string& index, const std::string &collection) "
   /**
-   * {@link #mGetDocument(StringVector ids, QueryOptions options)}
+   * {@link #getSpecifications(String index, String collection, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mReplaceDocument(std::vector<Document*>& documents, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::searchSpecifications(const std::string &filters, query_options* options) "
   /**
-   * Replace multiple documents
+   * Searches specifications across indexes/collections according to the provided filters.
    *
-   * @param documents  Array of Document objects to replace
-   * @param options  Request options
-   * @return a list of all updated documents
+   * @param filters - The json representing the filters
+   * @param options - Request options
+   * @return a SearchResult
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mReplaceDocument(std::vector<Document*>& documents) "
+%javamethodmodifiers kuzzleio::Collection::searchSpecifications(const std::string &filters) "
   /**
-   * {@link #mReplaceDocument(DocumentVector documents, QueryOptions options)}
+   * {@link #searchSpecifications(String filters, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mUpdateDocument(std::vector<Document*>& documents, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::updateSpecifications(const std::string &index, const std::string &collection, const std::string &body, query_options* options) "
   /**
-   * Update multiple documents
+   * Updates the current specifications of the specified collection
    *
-   * @param documents  Array of Document objects to replace
-   * @param options  Request options
-   * @return a list of all updated documents
+   * @param index - Parent data index name
+   * @param collection - collection to update
+   * @param body - The new specifications
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::mUpdateDocument(std::vector<Document*>& documents) "
+%javamethodmodifiers kuzzleio::Collection::updateSpecifications(const std::string &index, const std::string &collection, const std::string &body) "
   /**
-   * {@link #mUpdateDocument(DocumentVector documents, QueryOptions options)}
+   * {@link #updateSpecifications(String index, String collection, String body, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::publishMessage(json_object* content, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::validateSpecifications(const std::string &body, query_options* options) "
   /**
-   * Publish a real-time message
+   * Validates the provided specifications
    *
-   * @param content  Content to publish
-   * @param options  Request options
-   * @return boolean
+   * @param body - The json representing the specifications
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::publishMessage(json_object* content) "
+%javamethodmodifiers kuzzleio::Collection::validateSpecifications(const std::string &body) "
   /**
-   * {@link #publishMessage(JsonObject content, QueryOptions options)}
+   * {@link #validateSpecifications(String body, QueryOptions options)}
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::replaceDocument(const std::string& id, Document* document, query_options* options) "
+%javamethodmodifiers kuzzleio::Collection::deleteSpecifications(const std::string& index, const std::string &collection, query_options* options) "
   /**
-   * Replace an existing document with a new one.
+   * Delete the specifications for this collection
    *
-   * @param id  Document unique identifier
-   * @param document  New document
-   * @param options  Request options
-   * @return the document
+   * @param index - Parent data index name
+   * @param collection - The name of the collection
+   * @param options - Request options
    */
   public";
 
-%javamethodmodifiers kuzzleio::Collection::replaceDocument(const std::string& id, Document* document) "
+%javamethodmodifiers kuzzleio::Collection::deleteSpecifications(const std::string& index, const std::string &collection) "
   /**
-   * {@link #replaceDocument(String id, Document document, QueryOptions options)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::scroll(const std::string& id, query_options* options) "
-  /**
-   * Gets the next page of results from a previous search or scroll request
-   * 
-   * @param id  Scroll unique identifier
-   * @param options  Request options
-   * @returns a SearchResult
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::scroll(const std::string& id) "
-  /**
-   * {@link #scroll(String id, QueryOptions options)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::search(search_filters* filters, query_options* options) "
-  /**
-   * Executes a search on the data collection.
-   * /!\ There is a small delay between documents creation and their existence in our search layer,
-   * usually a couple of seconds.
-   * That means that a document that was just been created won’t be returned by this function.
-   *
-   * @param filters  Search filters to apply
-   * @param options  Request options
-   * @returns a SearchResult
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::search(search_filters* filters) "
-  /**
-   * {@link #search(SearchFilters filters, QueryOptions options)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::subscribe(search_filters* filters, NotificationListener *listener, room_options* options) "
-  /**
-   * Subscribes to this data collection with a set of Kuzzle DSL filters.
-   *
-   * @param filters  Subscription filters
-   * @param options  Request options
-   * @param listener  Response callback listener
-   * @return an object with a onDone() callback triggered when the subscription is active
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::subscribe(search_filters* filters, NotificationListener *listener) "
-  /**
-   * {@link #subscribe(SearchFilters filters, NotificationListener listeners)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::updateDocument(const std::string& id, Document *document, query_options* options) "
-  /**
-   * Update parts of a document
-   *
-   * @param id  Document unique identifier
-   * @param content  Document content to update
-   * @param options  Request options
-   * @return the document
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Collection::updateDocument(const std::string& id, Document *document) "
-  /**
-   * {@link #updateDocument(String id, Document document)}
+   * {@link #deleteSpecifications(String index, String collection, QueryOptions options)}
    */
   public";

@@ -21,12 +21,18 @@ import (
 )
 
 // SearchSpecifications searches specifications across indexes/collections according to the provided filters.
-func (dc *Collection) SearchSpecifications(options types.QueryOptions) (*types.SearchResult, error) {
+func (dc *Collection) SearchSpecifications(filters json.RawMessage, options types.QueryOptions) (*types.SearchResult, error) {
 	ch := make(chan *types.KuzzleResponse)
+
+	f := json.RawMessage("{}")
+	if filters != nil {
+		f = filters
+	}
 
 	query := &types.KuzzleRequest{
 		Controller: "collection",
 		Action:     "searchSpecifications",
+		Body:       f,
 	}
 
 	go dc.Kuzzle.Query(query, options, ch)

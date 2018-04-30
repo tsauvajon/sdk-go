@@ -36,7 +36,7 @@
    */
   public";
 
-%javamethodmodifiers kuzzleio::Kuzzle::createIndex(const std::string&, query_options*) "
+%javamethodmodifiers kuzzleio::Kuzzle::Index(const std::string&, query_options*) "
   /**
    * Create a new data index
    *
@@ -282,29 +282,6 @@
 %javamethodmodifiers kuzzleio::Kuzzle::getServerInfo() "
   /**
    * {@link #getServerInfo(QueryOptions)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::listCollections(const std::string&, query_options*) "
-  /**
-   * List data collections
-   *
-   * @param index - Parent data index name
-   * @param options - Request options
-   * @throws io.kuzzle.sdk.BadRequestException, io.kuzzle.sdk.ForbiddenException, io.kuzzle.sdk.GatewayTimeoutException, io.kuzzle.sdk.InternalException, io.kuzzle.sdk.NotFoundException, io.kuzzle.sdk.PartialException, io.kuzzle.sdk.PreconditionException, io.kuzzle.sdk.ServiceUnavailableException, io.kuzzle.sdk.UnauthorizedException
-   * @return a CollectionListResult
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::listCollections(const std::string&) "
-  /**
-   * {@link #listCollections(String, QueryOptions)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::listCollections() "
-  /**
-   * {@link #listCollections(String, QueryOptions)}
    */
   public";
 

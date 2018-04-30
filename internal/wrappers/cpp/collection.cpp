@@ -96,8 +96,8 @@ namespace kuzzleio {
         return ret;
     }
 
-    search_result* Collection::searchSpecifications(query_options *options) Kuz_Throw_KuzzleException {
-        search_result *r = kuzzle_collection_search_specifications(_collection, options);
+    search_result* Collection::searchSpecifications(const std::string& filters, query_options *options) Kuz_Throw_KuzzleException {
+        search_result *r = kuzzle_collection_search_specifications(_collection, const_cast<char*>(filters.c_str()), options);
         if (r->error != NULL)
             throwExceptionFromStatus(r);
 

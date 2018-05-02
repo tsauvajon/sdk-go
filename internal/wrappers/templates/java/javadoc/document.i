@@ -295,3 +295,21 @@
    * {@link #mReplace(String index, String collection, String id, String body, QueryOptions options)}
    */
   public";
+
+%javamethodmodifiers kuzzleio::Document::mUpdate(const std::string& index, const std::string& collection, const std::string& body, query_options* options) "
+  /**
+   * Update parts of a documents
+   *
+   * @param index - the index where to update the document
+   * @param collection - the collection where to update the document
+   * @param body - json representing documents to update
+   * @param options - Request options
+   * @return the documents
+   */
+  public";
+
+%javamethodmodifiers kuzzleio::Document::mUpdate(const std::string& index, const std::string& collection, const std::string& body) "
+  /**
+   * {@link #mUpdate(String index, String collection, String body, String body)}
+   */
+  public";

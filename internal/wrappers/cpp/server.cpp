@@ -48,7 +48,7 @@ namespace kuzzleio {
     return ret;
   }
 
-  std::string Server::getStats(time_t start, time_t end, query_options* options) Kuz_Throw_KuzzleException {
+  std::string Server::getStats(unsigned long start, unsigned long end, query_options* options) Kuz_Throw_KuzzleException {
     string_result* r = kuzzle_get_stats(_server, start, end, options);
     if (r->error != NULL)
         throwExceptionFromStatus(r);

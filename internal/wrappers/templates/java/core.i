@@ -51,6 +51,7 @@
 %include "javadoc/document.i"
 %include "javadoc/room.i"
 %include "javadoc/collection.i"
+%include "javadoc/server.i"
 %include "../../kcore.i"
 
 %include "std_vector.i"

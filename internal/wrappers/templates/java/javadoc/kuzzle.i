@@ -191,38 +191,6 @@
    */
   public";
 
-%javamethodmodifiers kuzzleio::Kuzzle::getAllStatistics(query_options*) "
-  /**
-   * Get all Kuzzle usage statistics frames
-   *
-   * @param options - Request options
-   * @throws io.kuzzle.sdk.BadRequestException, io.kuzzle.sdk.ForbiddenException, io.kuzzle.sdk.GatewayTimeoutException, io.kuzzle.sdk.InternalException, io.kuzzle.sdk.NotFoundException, io.kuzzle.sdk.PartialException, io.kuzzle.sdk.PreconditionException, io.kuzzle.sdk.ServiceUnavailableException, io.kuzzle.sdk.UnauthorizedException
-   * @return a AllStatisticsResult
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::getAllStatistics() "
-  /**
-   * {@link #getAllStatistics(QueryOptions)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::getStatistics(unsigned long, query_options*) "
-  /**
-   * Get Kuzzle usage statistics
-   *
-   * @param options - Request options
-   * @throws io.kuzzle.sdk.BadRequestException, io.kuzzle.sdk.ForbiddenException, io.kuzzle.sdk.GatewayTimeoutException, io.kuzzle.sdk.InternalException, io.kuzzle.sdk.NotFoundException, io.kuzzle.sdk.PartialException, io.kuzzle.sdk.PreconditionException, io.kuzzle.sdk.ServiceUnavailableException, io.kuzzle.sdk.UnauthorizedException
-   * @return a StatisticsResult
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::getStatistics(unsigned long) "
-  /**
-   * {@link #getStatistics(QueryOptions)}
-   */
-  public";
-
 %javamethodmodifiers kuzzleio::Kuzzle::getAutoRefresh(const std::string&, query_options*) "
   /**
    * Gets the autoRefresh value for the provided data index name
@@ -266,22 +234,6 @@
 %javamethodmodifiers kuzzleio::Kuzzle::getMyRights() "
   /**
    * {@link #getMyRights(QueryOptions)}
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::getServerInfo(query_options*) "
-  /**
-   * Gets server info.
-   *
-   * @param options - Request options
-   * @throws io.kuzzle.sdk.BadRequestException, io.kuzzle.sdk.ForbiddenException, io.kuzzle.sdk.GatewayTimeoutException, io.kuzzle.sdk.InternalException, io.kuzzle.sdk.NotFoundException, io.kuzzle.sdk.PartialException, io.kuzzle.sdk.PreconditionException, io.kuzzle.sdk.ServiceUnavailableException, io.kuzzle.sdk.UnauthorizedException
-   * #return a JsonResult
-   */
-  public";
-
-%javamethodmodifiers kuzzleio::Kuzzle::getServerInfo() "
-  /**
-   * {@link #getServerInfo(QueryOptions)}
    */
   public";
 

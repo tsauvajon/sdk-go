@@ -49,7 +49,6 @@
 %include "typemap.i"
 %include "javadoc/kuzzle.i"
 %include "javadoc/document.i"
-%include "javadoc/room.i"
 %include "javadoc/collection.i"
 %include "javadoc/server.i"
 %include "../../kcore.i"

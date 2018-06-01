@@ -154,6 +154,13 @@ cpp: core
 		ar rvs $(OUTDIR)/libcpp.a $(OUTDIR)/*.o
 		g++ -shared -fPIC -o $(OUTDIR)/libcpp.so -Wl,--whole-archive $(OUTDIR)/libcpp.a build/c/libkuzzlesdk.a -Wl,--no-whole-archive
 
+cpp: OUTDIR = $(ROOTOUTDIR)/cpp
+cpp: makedir $(CPPSDK)
+cpp: LANGUAGE = c++
+cpp: core
+		ar rvs $(OUTDIR)/libcpp.a $(OUTDIR)/*.o
+		g++ -shared -fPIC -o $(OUTDIR)/libcpp.so -Wl,--whole-archive $(OUTDIR)/libcpp.a build/c/libkuzzlesdk.a -Wl,--no-whole-archive
+
 clean:
 	rm -rf build/c build/java/src build/java/io build/java/build kcore_wrap.cxx kcore_wrap.h build/csharp build/python
 	rm -rf build/io

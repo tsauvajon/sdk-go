@@ -106,7 +106,7 @@ swig_csharp:
 
 swig_ruby:
 	mkdir -p $(OUTDIR)
-	$(SWIG) -Wall -c++ -ruby -outdir $(OUTDIR) -o $(SRCS) $(INCS) $(RUBYINCLUDE) templates/ruby/core.i
+	$(SWIG) -Wall -c++ -ruby -globalmodule -outdir $(OUTDIR) -o $(SRCS) $(INCS) $(RUBYINCLUDE) templates/ruby/core.i
 
 
 makedir:

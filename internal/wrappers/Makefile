@@ -4,6 +4,7 @@ GOROOT ?= /usr/local/go
 GOCC = $(GOROOT)/bin/go
 JAVA_HOME ?= /usr/local
 PYTHON_INCLUDE_DIR ?= `pkg-config --cflags python3`
+RUBY_INCLUDE_DIR ?= `pkg-config --cflags ruby`
 GOFLAGS = -buildmode=c-archive
 GOSRC = ./cgo/kuzzle/
 GOTARGETDIR = $(ROOTOUTDIR)/c
@@ -22,6 +23,7 @@ OBJS = $(SRCS:.cxx=.o)
 
 JAVAINCLUDE = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
 PYTHONINCLUDE = $(PYTHON_INCLUDE_DIR) -I$(ROOT_DIR)templates/python
+RUBYINCLUDE = $(RUBY_INCLUDE_DIR)
 
 CPP_SDK_SRCS = kuzzle.cpp \
 					document.cpp \

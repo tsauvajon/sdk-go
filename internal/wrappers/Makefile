@@ -62,11 +62,15 @@ core_python: core_java
 
 core_csharp: core_java
 
+core_ruby: core_java
+
 wrapper_java: $(OBJS)
 
 wrapper_python: $(OBJS)
 
 wrapper_csharp: $(OBJS)
+
+wrapper_ruby: $(OBJS)
 
 java_object:
 	$(CPP) -shared kcore_wrap.o -o $(OUTDIR)/libkuzzle-wrapper-java.so $(CPPFLAGS) $(LDFLAGS) $(LIBS) $(INCS) $(JAVAINCLUDE)
@@ -79,6 +83,10 @@ python_object:
 csharp_object:
 	$(CPP) -shared kcore_wrap.o -o $(OUTDIR)/libkuzzle-wrapper-csharp.so $(CPPFLAGS) $(LDFLAGS) $(LIBS) $(INCS)
 	strip $(OUTDIR)/libkuzzle-wrapper-csharp.so
+
+ruby_object:
+	$(CPP) -shared kcore_wrap.o -o $(OUTDIR)/libkuzzle-wrapper-ruby.so $(CPPFLAGS) $(LDFLAGS) $(LIBS) $(INCS) $(RUBYINCLUDE)
+	strip $(OUTDIR)/libkuzzle-wrapper-ruby.so
 
 swig:
 	mkdir -p $(OUTDIR)
@@ -95,6 +103,10 @@ swig_python:
 swig_csharp:
 	mkdir -p $(OUTDIR)
 	$(SWIG) -Wall -c++ -csharp -namespace Kuzzleio -dllimport kuzzle-wrapper-csharp -outdir $(OUTDIR) -o $(SRCS) $(INCS)  templates/csharp/core.i
+
+swig_ruby:
+	mkdir -p $(OUTDIR)
+	$(SWIG) -Wall -c++ -ruby -globalmodule -outdir $(OUTDIR) -o $(SRCS) $(INCS) $(RUBYINCLUDE) templates/ruby/core.i
 
 
 makedir:
@@ -130,6 +142,10 @@ python: makedir core_python swig_python wrapper_python python_object
 	python3 $(OUTDIR)/setup.py build_ext -I $(HEADERSDIR):$(CPPDIR):$(OUTDIR):$(GOTARGETDIR):$(OUTDIR)/templates/python -L $(OUTDIR):$(GOTARGETDIR) -R $(GOTARGETDIR) -l kuzzlesdk  -b $(OUTDIR) -t $(OUTDIR)/tmp
 	cp -p $(GOTARGET) $(OUTDIR)
 	cp -p $(GOTARGETSO) $(OUTDIR)
+
+ruby: LANGINCLUDE = $(RUBYINCLUDE)
+ruby: OUTDIR = $(ROOTOUTDIR)/ruby
+ruby: makedir core_ruby swig_ruby wrapper_ruby ruby_object
 
 cpp: OUTDIR = $(ROOTOUTDIR)/cpp
 cpp: makedir $(CPPSDK)

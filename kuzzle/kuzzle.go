@@ -59,7 +59,7 @@ type Kuzzle struct {
 // NewKuzzle is the Kuzzle constructor
 func NewKuzzle(c protocol.Protocol, options types.Options) (*Kuzzle, error) {
 	if c == nil {
-		return nil, types.NewError("Connection is nil")
+		return nil, types.NewError("No protocol specified")
 	}
 
 	if options == nil {

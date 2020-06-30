@@ -19,7 +19,6 @@ func main() {
 	connectErr := kuzzle.Connect()
 	if connectErr != nil {
 		log.Fatal(connectErr)
-		os.Exit(1)
 	}
 
 	rescueStdout := os.Stdout

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/kuzzleio/sdk-go/kuzzle"
 	"github.com/kuzzleio/sdk-go/protocol/websocket"
@@ -22,7 +21,6 @@ func main() {
 	// Connects to the server.
 	if err := kuzzle.Connect(); err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 	fmt.Println("Connected!")
 
@@ -70,7 +68,6 @@ func main() {
 		nil,
 	); err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 	fmt.Println("Successfully subscribed!")
 
@@ -91,7 +88,6 @@ func main() {
 		nil,
 	); err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 	fmt.Println("New document added to the yellow-taxi collection!")
 

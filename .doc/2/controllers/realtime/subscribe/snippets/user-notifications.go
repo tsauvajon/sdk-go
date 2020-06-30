@@ -35,7 +35,6 @@ kuzzle2, _ := kuzzlepkg.NewKuzzle(ws2, nil)
 connectErr = kuzzle2.Connect()
 if connectErr != nil {
   log.Fatal(connectErr)
-  os.Exit(1)
 }
 
 // Set some volatile data

@@ -18,7 +18,6 @@ func main() {
 	connectErr := kuzzle.Connect()
 	if connectErr != nil {
 		log.Fatal(connectErr)
-		os.Exit(1)
 	}
 
 	time.Sleep(100 * time.Millisecond)

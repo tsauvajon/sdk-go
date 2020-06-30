@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"log"
 
-	"github.com/kuzzleio/sdk-go/protocol/websocket"
 	"github.com/kuzzleio/sdk-go/kuzzle"
+	"github.com/kuzzleio/sdk-go/protocol/websocket"
 )
 
-func main()	{
+func main() {
 	// Creates a WebSocket connection.
 	// Replace "kuzzle" with
 	// your Kuzzle hostname like "localhost"
@@ -21,7 +20,6 @@ func main()	{
 	err := kuzzle.Connect()
 	if err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 	fmt.Println("Connected!")
 
@@ -29,11 +27,10 @@ func main()	{
 	// a new index.
 	if err := kuzzle.Index.Create("nyc-open-data", nil); err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 	fmt.Println("Index nyc-open-data created!")
 
-	// Creates a collection 
+	// Creates a collection
 	if err := kuzzle.Collection.Create(
 		"nyc-open-data",
 		"yellow-taxi",
@@ -41,7 +38,6 @@ func main()	{
 		nil,
 	); err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 	fmt.Println("Collection yellow-taxi created!")
 

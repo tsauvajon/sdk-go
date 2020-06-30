@@ -146,4 +146,6 @@ func (k *Kuzzle) Query(query *types.KuzzleRequest, options types.QueryOptions, r
 		}
 		return
 	}
+
+	responseChannel <- &types.KuzzleResponse{Status: 202}
 }

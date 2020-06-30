@@ -3,13 +3,13 @@ set -e
 
 cover_dir=".cover"
 profile="$cover_dir/cover.out"
-mode=count
+mode=atomic
 timeout=${TIMEOUT:=1m}
 
 generate_cover_data() {
     rm -rf "$cover_dir"
     mkdir "$cover_dir"
-    go test -timeout "$timeout" -covermode="$mode" -coverprofile="$profile" ./...
+    go test -race -timeout "$timeout" -covermode="$mode" -coverprofile="$profile" ./...
 }
 
 show_cover_report() {
